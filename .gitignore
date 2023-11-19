@@ -33,10 +33,19 @@
 
 # vscode
 /.vscode/
-/demo/
+/build/
 
 # Clion
 /main.cpp
 /CMakeLists.txt
 /.idea
 /cmake-build-debug/
+
+# Test and temp files
+/demo/
+/test/
+/temp/
+/main.c
+/main.cpp
+/test.c
+/test.cpp
