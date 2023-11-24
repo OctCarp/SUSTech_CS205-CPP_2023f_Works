@@ -33,7 +33,11 @@
 
 # vscode
 /.vscode/
-/build/
+/.vs/
+*.json
+
+#CMake Build
+build/
 
 # Clion
 /main.cpp
