@@ -36,11 +36,13 @@
 /.vs/
 *.json
 
-#CMake Build
+# CMake Build
 build/
 
+# cache
+/.cache/
+
 # Clion
-/main.cpp
 /CMakeLists.txt
 /.idea
 /cmake-build-debug/
