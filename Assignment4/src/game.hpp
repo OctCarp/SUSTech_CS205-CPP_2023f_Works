@@ -1,4 +1,6 @@
+#ifndef ASSIGN4_INTEGRATED
 #pragma once
+#endif
 
 #include <initializer_list>
 #include <iostream>
@@ -6,8 +8,13 @@
 #include <string>
 #include <vector>
 
+#ifndef ASSIGN4_INTEGRATED
+
 #include "card.hpp"
 #include "player.hpp"
+
+#endif
+
 
 namespace uno {
 
@@ -17,6 +24,11 @@ namespace uno {
          * The players in the game
          */
         std::vector<Player *> players;
+
+        /**
+         * The players number in game
+         */
+        int playerNum;
 
         /**
          * The index of the current player
@@ -38,6 +50,16 @@ namespace uno {
          */
         std::stack<const Card *> discard;
 
+        /**
+         * Next turn skip if it is true.
+         */
+        bool skip = false;
+
+        /**
+         * Next turn draw two if it is true.
+         */
+        bool draw_two = false;
+
     public:
         /**
          * @brief Creates a new game with the given players joining
@@ -53,9 +75,21 @@ namespace uno {
         Game(std::initializer_list<Player *> players);
 
         /**
+         * @brief Get the next card from draw
+         * @return The Card pointer to pop out from draw
+         */
+        const Card *get_top_draw_out();
+
+        /**
          * @brief Sets up the game (check the game rules)
          */
         void setup();
+
+        /**
+         * @brief Get next player by direction
+         * @return Next player ID
+         */
+        int get_next_player() const;
 
         /**
          * @brief Plays the turn
@@ -90,6 +124,8 @@ namespace uno {
          *      The players are represented by their name (not Player+index or so)
          */
         friend std::ostream &operator<<(std::ostream &os, const Game &game);
+
+        friend class Card;
 
         friend class NumberCard;
 

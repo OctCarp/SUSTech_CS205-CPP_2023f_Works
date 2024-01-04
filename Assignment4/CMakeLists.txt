@@ -4,4 +4,5 @@ project(assign4)
 set(CMAKE_CXX_STANDARD 14)
 
 file(GLOB SRC "src/*.cpp")
-add_executable(assign4 ${SRC})
+file(GLOB INC "src/*.hpp")
+add_executable(assign4 ${SRC} ${INC})

@@ -1,7 +1,11 @@
 #include <iostream>
 
+#ifndef ASSIGN4_INTEGRATED
+
 #include "player.hpp"
 #include "game.hpp"
+
+#endif
 
 int main() {
     srand(time(nullptr));

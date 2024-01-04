@@ -45,7 +45,7 @@ build/
 # Clion
 /CMakeLists.txt
 /.idea
-/cmake-build-debug/
+cmake-build-debug/
 
 # Test and temp files
 /demo/

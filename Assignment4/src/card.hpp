@@ -1,6 +1,9 @@
+#ifndef ASSIGN4_INTEGRATED
 #pragma once
+#endif
 
 #include <string>
+#include <utility>
 
 namespace uno {
     class Game;
@@ -13,6 +16,8 @@ namespace uno {
         std::string color;
 
     public:
+        explicit Card(std::string color);
+
         /**
          * @brief Gets the string representation of the card
          * @return The formatted string
@@ -38,7 +43,7 @@ namespace uno {
          * @param game The game instance
          * @return true if the card can be played, false otherwise
          */
-        virtual bool is_available(const Game &game) const = 0;
+        bool is_available(const Game &game) const;
 
         /**
          * @brief Performs the effect of the card
@@ -51,22 +56,61 @@ namespace uno {
      * @brief A number card, holds a number and a color
      * @note Its string representation is the number followed by the color, e.g. "1B", "2R"
      */
-    class NumberCard /* TODO */;
+    class NumberCard : public Card {
+    private:
+        int number;
+    public:
+        NumberCard(std::string color, int number);
+
+        std::string to_string() const override;
+
+        const int get_point() const override;
+
+        void effect(Game &game) const override;
+    };
+
     /**
      * @brief A skip card, holds a color
      * @note Its string representation is "S" followed by the color, e.g. "SB", "SR"
      */
-    class SkipCard /* TODO */;
+    class SkipCard : public Card {
+    public:
+        SkipCard(std::string color);
+
+        std::string to_string() const override;
+
+        const int get_point() const override;
+
+        void effect(Game &game) const override;
+    };
 
     /**
      * @brief A reverse card, holds a color
      * @note Its string representation is "R" followed by the color, e.g. "RB", "RR"
      */
-    class ReverseCard /* TODO */;
+    class ReverseCard : public Card {
+    public:
+        ReverseCard(std::string color);
+
+        std::string to_string() const override;
+
+        const int get_point() const override;
+
+        void effect(Game &game) const override;
+    };
 
     /**
      * @brief A draw two card, holds a color
      * @note Its string representation is "D" followed by the color, e.g. "DB", "DR"
      */
-    class DrawTwoCard /* TODO */;
+    class DrawTwoCard : public Card {
+    public:
+        DrawTwoCard(std::string color);
+
+        std::string to_string() const override;
+
+        const int get_point() const override;
+
+        void effect(Game &game) const override;
+    };
 }
